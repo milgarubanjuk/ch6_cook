@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/aop 
+						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+						http://www.springframework.org/schema/tx 
+						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+						
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost/springbook?characterEncoding=UTF-8" />
+		<property name="username" value="spring" />
+		<property name="password" value="book" />
+	</bean>
+	
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />  
+	</bean>
+		
+    <bean id="fridge" class="dao.FridgeDao">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="kitchenImpl" class="biz.KitchenImpl">
+		<property name="fridge" ref="fridge" />
+	</bean>
+	
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"></bean>
+	
+	<bean id="transactionAdvisor" class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="advice" ref="transactionAdvice"></property>
+		<property name="pointcut" ref="transactionPointCut"></property>
+	</bean>
+		
+	<bean id="transactionAdvice" class="biz.TansactionAdvice">
+		<property name="transactionManager" ref="transactionManager"></property>
+	</bean>
+	
+	<bean id= "transactionPointCut" class="biz.NameMatchClassMethodPointcut">
+		<property name="mappedClassName" value="*Kitchen"></property>
+		<property name="mappedName" value="요리*"></property>
+	</bean>
+	
+	<!-- 
+	<bean id="Kitchen" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="kitchenImpl"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionAdvisor</value>
+			</list>
+		</property>
+	</bean>
+	 -->
+
+	<bean id="testKitchen" class="test.KitchenTest$TestKitchen"  parent="kitchenImpl" />
+
+	
+	<!-- aop -->
+	<tx:annotation-driven />
+	<!--  
+	<aop:config>
+		<aop:advisor advice-ref="transactionAdvice" pointcut="bean(*Service)" />
+	</aop:config>
+	
+	<tx:advice id="transactionAdvice">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="*" />
+		</tx:attributes> 
+	</tx:advice>
+	 -->
+		
+</beans>
