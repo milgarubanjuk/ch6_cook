@@ -3,7 +3,7 @@ package biz;
 import java.util.List;
 
 import dao.Fridge;
-
+//this class is about what we do at the kitchen
 public class KitchenImpl implements Kitchen {
 	Fridge fridge;
 	
@@ -12,29 +12,29 @@ public class KitchenImpl implements Kitchen {
 	}
 	
 	@Override
-	public void ³ÃÀå°í_Àç·á³Ö±â(ShoppingBasket shoppingBasket){
-		fridge.³ÃÀå°í_Àç·á³Ö±â(shoppingBasket);
+	public void ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½(ShoppingBasket shoppingBasket){
+		fridge.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½(shoppingBasket);
 	}
 
 	@Override
-	public void ³ÃÀå°í_Ã»¼Ò(){
-		fridge.³ÃÀå°í_Ã»¼Ò();
+	public void ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_Ã»ï¿½ï¿½(){
+		fridge.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_Ã»ï¿½ï¿½();
 	}
 
 	@Override
-	public void ¿ä¸®ÇÏ±â(List<Menu> lMenu) {
+	public void ï¿½ä¸®ï¿½Ï±ï¿½(List<Menu> lMenu) {
 		
 		String[] ingredients = null;
 		List<ShoppingBasket> l_shoppingBasket = null;
 		boolean cooking = true;
 		ShoppingBasket shoppingBasket = new ShoppingBasket();
 		
-		//1. Àç·á È®ÀÎ
+		//1. ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 		for(Menu menu : lMenu) {
 			ingredients = menu.getIngredients().split(",");
 			
 			for(String ingredient: ingredients) {
-				l_shoppingBasket = fridge.Àç·áÈ®ÀÎ(ingredient);
+				l_shoppingBasket = fridge.ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½(ingredient);
 				if(!(l_shoppingBasket.size() > 0 && l_shoppingBasket.get(0).getAmount() > 0)) {
 					cooking = false;
 					break;
@@ -47,12 +47,12 @@ public class KitchenImpl implements Kitchen {
 					shoppingBasket.setIngredient(ingredient);
 					shoppingBasket.setAmount(0);
 					
-					fridge.³ÃÀå°í_Àç·á»ç¿ë(shoppingBasket);
+					fridge.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(shoppingBasket);
 				}
 				System.out.println(">>Hmm.. yammy!!");
 			}
 			else{
-				System.out.println(">>¸Ô°í½ÍÀ¸¸é ¸¶Æ®¿¡ °¬´Ù¿À½Ã¿À!! Àç·á°¡ ¸ðÀÚ¶ó¿À");
+				System.out.println(">>ï¿½Ô°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¿ï¿½ï¿½Ã¿ï¿½!! ï¿½ï¿½ï¿½á°¡ ï¿½ï¿½ï¿½Ú¶ï¿½ï¿½ï¿½");
 //				throw new Exception();
 			}
 		}		
@@ -60,11 +60,11 @@ public class KitchenImpl implements Kitchen {
 	
 	
 	
-	public List<ShoppingBasket> Àç·áÈ®ÀÎ(String ingredient){
-		return fridge.Àç·áÈ®ÀÎ(ingredient);
+	public List<ShoppingBasket> ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½(String ingredient){
+		return fridge.ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½(ingredient);
 	}
 	
-	public List<ShoppingBasket> Àç·áÈ®ÀÎ() {
-		return fridge.Àç·áÈ®ÀÎ();
+	public List<ShoppingBasket> ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½() {
+		return fridge.ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½();
 	}
 }
