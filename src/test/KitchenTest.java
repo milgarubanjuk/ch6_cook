@@ -20,7 +20,7 @@ import biz.ShoppingBasket;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="/test-applicationContext.xml")
 public class KitchenTest {
-
+// add comments
 //	@Autowired Fridge fridge;
 	@Autowired PlatformTransactionManager transactionManager;
 	@Autowired ApplicationContext context;
@@ -32,57 +32,57 @@ public class KitchenTest {
 	@Before
 	public void setUp() {
 		lShoppingBasket = Arrays.asList(
-				new ShoppingBasket("¸¸µÎ", 1),
-				new ShoppingBasket("ÂÌ¸é", 2),
+				new ShoppingBasket("ï¿½ï¿½ï¿½ï¿½", 1),
+				new ShoppingBasket("ï¿½Ì¸ï¿½", 2),
 				new ShoppingBasket("Ä¡Å²", 3),
-				new ShoppingBasket("³ìÂ÷¾ÆÀÌ½ºÅ©¸²", 1),
-				new ShoppingBasket("¼ö¹Ú", 1),
-				new ShoppingBasket("¿ÍÇÃ", 1)
+				new ShoppingBasket("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½Å©ï¿½ï¿½", 1),
+				new ShoppingBasket("ï¿½ï¿½ï¿½ï¿½", 1),
+				new ShoppingBasket("ï¿½ï¿½ï¿½ï¿½", 1)
 				);
 		
 		lmenu = Arrays.asList(
-				new Menu("¾ç³ä¸¸µÎ", "ÂÌ¸é,¸¸µÎ"),
-				new Menu("¿ÍÇÃ¾ÆÀÌ½ºÅ©¸²", "³ìÂ÷¾ÆÀÌ½ºÅ©¸²,¿ÍÇÃ"),
-				new Menu("¼ö¹ÚÈ­Ã¤", "¼ö¹Ú,»çÀÌ´Ù"),
-				new Menu("ÆÏºù¼ö", "¿ìÀ¯,´ÜÆÏ")
+				new Menu("ï¿½ï¿½ï¿½ä¸¸ï¿½ï¿½", "ï¿½Ì¸ï¿½,ï¿½ï¿½ï¿½ï¿½"),
+				new Menu("ï¿½ï¿½ï¿½Ã¾ï¿½ï¿½Ì½ï¿½Å©ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½Å©ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½"),
+				new Menu("ï¿½ï¿½ï¿½ï¿½È­Ã¤", "ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ì´ï¿½"),
+				new Menu("ï¿½Ïºï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½")
 				);
 	}
 	
 	@Test
-	public void Àç·áÈ®ÀÎ() {
-		testKitchen.³ÃÀå°í_Ã»¼Ò();
+	public void ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½() {
+		testKitchen.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_Ã»ï¿½ï¿½();
 		for(ShoppingBasket shoppingBasket : lShoppingBasket)
-			testKitchen.³ÃÀå°í_Àç·á³Ö±â(shoppingBasket);
+			testKitchen.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½(shoppingBasket);
 		
-		for(ShoppingBasket shoppingBasket : testKitchen.Àç·áÈ®ÀÎ())
-			System.out.println("Àç·á: " + shoppingBasket.getIngredient() + " ¼ö·®: " + shoppingBasket.getAmount());
+		for(ShoppingBasket shoppingBasket : testKitchen.ï¿½ï¿½ï¿½ï¿½È®ï¿½ï¿½())
+			System.out.println("ï¿½ï¿½ï¿½ï¿½: " + shoppingBasket.getIngredient() + " ï¿½ï¿½ï¿½ï¿½: " + shoppingBasket.getAmount());
 	}
 	
 	@Test
-	public void ¿ä¸®ÇÏ±â() {
-//		testKitchen.³ÃÀå°í_Ã»¼Ò();
+	public void ï¿½ä¸®ï¿½Ï±ï¿½() {
+//		testKitchen.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_Ã»ï¿½ï¿½();
 //		
 //		for(ShoppingBasket shoppingBasket : lShoppingBasket)
-//			testKitchen.³ÃÀå°í_Àç·á³Ö±â(shoppingBasket);
+//			testKitchen.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½(shoppingBasket);
 		
-		this.testKitchen.¿ä¸®ÇÏ±â(lmenu);   
+		this.testKitchen.ï¿½ä¸®ï¿½Ï±ï¿½(lmenu);   
 	}
 	
 	static class TestKitchen extends KitchenImpl {
-		public void ¿ä¸®ÇÏ±â(List<Menu> lmenu) {
-			³ÃÀå°í_Ã»¼Ò();
+		public void ï¿½ä¸®ï¿½Ï±ï¿½(List<Menu> lmenu) {
+			ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_Ã»ï¿½ï¿½();
 			
 			for(ShoppingBasket shoppingBasket : lShoppingBasket)
-				super.³ÃÀå°í_Àç·á³Ö±â(shoppingBasket);
+				super.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½(shoppingBasket);
 			
-			super.¿ä¸®ÇÏ±â(lmenu);
-			System.out.println("µÞÁ¤¸®±îÁö ³¡!!!!");
+			super.ï¿½ä¸®ï¿½Ï±ï¿½(lmenu);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½!!!!");
 		}
 		
-		public void ³ÃÀå°í_Ã»¼Ò() {
-			System.out.println("³ÃÀå°í Ã»¼Ò ½ÃÀÛ");
-			super.³ÃÀå°í_Ã»¼Ò();
-			System.out.println("³ÃÀå°í Ã»¼Ò ³¡");
+		public void ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_Ã»ï¿½ï¿½() {
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
+			super.ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½_Ã»ï¿½ï¿½();
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã»ï¿½ï¿½ ï¿½ï¿½");
 		}
 	}
 }
