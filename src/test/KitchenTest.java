@@ -49,7 +49,7 @@ public class KitchenTest {
 	}
 	
 	@Test
-	public void ����Ȯ��() {
+	public void shopping() {
 		testKitchen.������_û��();
 		for(ShoppingBasket shoppingBasket : lShoppingBasket)
 			testKitchen.������_�����ֱ�(shoppingBasket);
@@ -59,7 +59,7 @@ public class KitchenTest {
 	}
 	
 	@Test
-	public void �丮�ϱ�() {
+	public void cooking() {
 //		testKitchen.������_û��();
 //		
 //		for(ShoppingBasket shoppingBasket : lShoppingBasket)
@@ -76,7 +76,7 @@ public class KitchenTest {
 				super.������_�����ֱ�(shoppingBasket);
 			
 			super.�丮�ϱ�(lmenu);
-			System.out.println("���������� ��!!!!");
+			System.out.println("I don't know what they say!!!");
 		}
 		
 		public void ������_û��() {
