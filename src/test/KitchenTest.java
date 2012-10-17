@@ -20,8 +20,8 @@ import biz.ShoppingBasket;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="/test-applicationContext.xml")
 public class KitchenTest {
-// add comments
-//	@Autowired Fridge fridge;
+// add comments ,d,d,d,d,d,,d
+	Autowired Fridge fridge;
 	@Autowired PlatformTransactionManager transactionManager;
 	@Autowired ApplicationContext context;
 	@Autowired Kitchen testKitchen;
